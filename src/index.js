@@ -45,10 +45,7 @@ database._getCaller = function (error) {
 database.query = function (query, values, connection, callback) {
   if (!pool) database.start()
 
-  if (connection instanceof Function) {
-    callback = connection
-    connection = pool
-  }
+  if (connection instanceof Function) callback = connection
   if (query instanceof Function) {
     query = query.toString().substring(10).slice(0, -4).replace(/^\n/, '')
   }
